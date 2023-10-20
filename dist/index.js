@@ -336,5 +336,111 @@ class OkraClient {
         const data = { options, page, limit };
         return this.sendRequest(this.createRequestConfig(url, data));
     }
+    async getAccountDetails(account) {
+        const encodedParams = new URLSearchParams();
+        encodedParams.set("account", account);
+        const url = "/accounts/getAccountDetails";
+        return this.sendRequest(this.createRequestConfig(url, encodedParams));
+    }
+    async getAccountById(id) {
+        const encodedParams = new URLSearchParams();
+        encodedParams.set("id", id);
+        const url = "/accounts/getById";
+        return this.sendRequest(this.createRequestConfig(url, encodedParams));
+    }
+    async getAccountsByCustomer(customer) {
+        const data = { customer };
+        const url = "/accounts/getByCustomer";
+        return this.sendRequest(this.createRequestConfig(url, data));
+    }
+    async getAccountsByName(name) {
+        const encodedParams = new URLSearchParams();
+        encodedParams.set("name", name);
+        const url = "/accounts/getByName";
+        return this.sendRequest(this.createRequestConfig(url, encodedParams));
+    }
+    async getAccountsByBank(bank) {
+        const encodedParams = new URLSearchParams();
+        encodedParams.set("bank", bank);
+        const url = "/accounts/getByBank";
+        return this.sendRequest(this.createRequestConfig(url, encodedParams));
+    }
+    async getAccountsByBalance(balance) {
+        const encodedParams = new URLSearchParams();
+        encodedParams.set("balance", balance);
+        const url = "/accounts/getByBalance";
+        return this.sendRequest(this.createRequestConfig(url, encodedParams));
+    }
+    async getAccountsByCustomerDate(from, to, customer) {
+        const encodedParams = new URLSearchParams();
+        encodedParams.set("from", from);
+        encodedParams.set("to", to);
+        encodedParams.set("customer", customer);
+        const url = "/accounts/getByCustomerDate";
+        return this.sendRequest(this.createRequestConfig(url, encodedParams));
+    }
+    async listCustomers(page, limit) {
+        const encodedParams = new URLSearchParams();
+        encodedParams.set("page", page.toString());
+        encodedParams.set("limit", limit.toString());
+        const url = "/customers/list";
+        return this.sendRequest(this.createRequestConfig(url, encodedParams));
+    }
+    async findCustomersByKeyValue(key, value) {
+        const encodedParams = new URLSearchParams();
+        encodedParams.set("key", key);
+        encodedParams.set("value", value);
+        const url = "/customers/find-customers-by";
+        return this.sendRequest(this.createRequestConfig(url, encodedParams));
+    }
+    async flagCustomer(bank, customer) {
+        const encodedParams = new URLSearchParams();
+        encodedParams.set("bank", bank);
+        encodedParams.set("customer", customer);
+        const url = "/customers/flag";
+        return this.sendRequest(this.createRequestConfig(url, encodedParams));
+    }
+    async unflagCustomer(bank, customer, unflag) {
+        const data = { bank, customer, unflag };
+        const url = "/customers/unflag";
+        return this.sendRequest(this.createRequestConfig(url, data));
+    }
+    async removeCustomer(customer) {
+        const data = { customer };
+        const url = "/customers/remove";
+        return this.sendRequest(this.createRequestConfig(url, data));
+    }
+    async getWallet() {
+        const options = this.createRequestConfig("/wallet/get");
+        return this.sendRequest(options);
+    }
+    async listWallet(page, limit, project, id, term) {
+        const data = { page, limit, project, id, term };
+        const options = this.createRequestConfig("/wallet/list", data);
+        return this.sendRequest(options);
+    }
+    async checkWalletBalance(project, id) {
+        const data = { project, id };
+        const options = this.createRequestConfig("/wallet/balance/check", data);
+        return this.sendRequest(options);
+    }
+    async createSandboxCustomers(customers) {
+        const options = this.createRequestConfig("/sandbox/customers/create", customers);
+        return this.sendRequest(options);
+    }
+    async listSandboxCustomers() {
+        const options = this.createRequestConfig("/sandbox/customers/list");
+        return this.sendRequest(options);
+    }
+    async getSandboxCustomer(customer) {
+        const data = { customer };
+        const options = this.createRequestConfig("/sandbox/customers/get", data);
+        return this.sendRequest(options);
+    }
+    async generateSandboxCustomers(number) {
+        const data = { create: true, number };
+        const options = this.createRequestConfig("/sandbox/customers/generate", data);
+        return this.sendRequest(options);
+    }
 }
 exports.default = OkraClient;
