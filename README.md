@@ -9,7 +9,6 @@ okra-node is a Node.js library that simplifies interactions with the Okra API. O
   - [Installation](#installation)
   - [Getting Started](#getting-started)
   - [Usage](#usage)
-  - [API Reference](#api-reference)
   - [Contributing](#contributing)
   - [License](#license)
 
@@ -47,10 +46,6 @@ okra.getAuthById('your-auth-id')
 ```
 
 You can similarly use other methods to access different Okra features like getting account details, transactions, balance, and more.
-
-## API Reference
-
-For detailed information on the available methods and their parameters, please refer to the [API Reference](API_REFERENCE.md).
 
 ## Contributing
 
